@@ -7,10 +7,13 @@ import mongoose from 'mongoose';
 const panSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
-    img: {
-      data: Buffer,
-      contentType: String,
-    },
+    img: [
+      {
+        data: Buffer,
+        contentType: String,
+        date: Date,
+      },
+    ],
     attributes: [{ type: String }],
   },
   {
