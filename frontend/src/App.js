@@ -24,7 +24,7 @@ function App() {
         <Navbar bg={'primary'} variant={'light'}>
           <Container>
             <LinkContainer to="/">
-              <Navbar.Brand>OnlyPans</Navbar.Brand>
+              <Navbar.Brand>OnlyPans 🍳</Navbar.Brand>
             </LinkContainer>
             <Nav className="ml-auto">
               <Link to="/feed" className="nav-link">

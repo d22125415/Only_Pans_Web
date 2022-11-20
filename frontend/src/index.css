@@ -11,3 +11,40 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.pans {
+  height: 100px;
+  max-width: 75%;
+}
+
+
+.pan{
+  border: 1px solid #28ade6;
+  margin: 1rem;
+}
+
+.pan img{
+  max-width: 420px;
+  max-height: 500px;
+  
+}
+
+
+
+
+
+
+.PanInfo{
+  padding: 10px;
+  margin-left: 70px;
+  display: inline-block;
+}
+
+.pan button, p, hr{
+  margin: 1rem;
+  font-size: 20px;
+  text-align: left;
+
+}
+
+
