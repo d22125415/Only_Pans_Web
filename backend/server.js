@@ -1,8 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import multer from 'multer';
-import Pan from './models/pansModel.js';
 import cors from 'cors';
 
 import seedRoutes from './routes/seedRoutes.js';

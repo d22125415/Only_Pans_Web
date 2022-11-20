@@ -13,21 +13,24 @@ let data = {
       img: [
         {
           data: fs.readFileSync(
-            path.join(__dirname + '/resources/Pan/images/pan1.jpg')
+            path.join(__dirname + '/resources/Pan/images/pan1.jpg'),
+            { encoding: 'base64' }
           ),
           contentType: 'image/png',
           date: new Date(2020, 0, 1),
         },
         {
           data: fs.readFileSync(
-            path.join(__dirname + '/resources/Pan/images/pan5.jpg')
+            path.join(__dirname + '/resources/Pan/images/pan5.jpg'),
+            { encoding: 'base64' }
           ),
           contentType: 'image/png',
           date: new Date(2020, 0, 5),
         },
         {
           data: fs.readFileSync(
-            path.join(__dirname + '/resources/Pan/images/pan6.jpg')
+            path.join(__dirname + '/resources/Pan/images/pan6.jpg'),
+            { encoding: 'base64' }
           ),
           contentType: 'image/png',
           date: new Date(2020, 0, 6),
@@ -40,21 +43,24 @@ let data = {
       img: [
         {
           data: fs.readFileSync(
-            path.join(__dirname + '/resources/Pan/images/pan2.jpg')
+            path.join(__dirname + '/resources/Pan/images/pan2.jpg'),
+            { encoding: 'base64' }
           ),
           contentType: 'image/png',
           date: new Date(2020, 5, 1),
         },
         {
           data: fs.readFileSync(
-            path.join(__dirname + '/resources/Pan/images/pan3.jpg')
+            path.join(__dirname + '/resources/Pan/images/pan3.jpg'),
+            { encoding: 'base64' }
           ),
           contentType: 'image/png',
           date: new Date(2020, 0, 2),
         },
         {
           data: fs.readFileSync(
-            path.join(__dirname + '/resources/Pan/images/pan9.jpg')
+            path.join(__dirname + '/resources/Pan/images/pan9.jpg'),
+            { encoding: 'base64' }
           ),
           contentType: 'image/png',
           date: new Date(2020, 0, 15),
@@ -67,21 +73,24 @@ let data = {
       img: [
         {
           data: fs.readFileSync(
-            path.join(__dirname + '/resources/Pan/images/pan8.jpg')
+            path.join(__dirname + '/resources/Pan/images/pan8.jpg'),
+            { encoding: 'base64' }
           ),
           contentType: 'image/png',
           date: new Date(2020, 0, 11),
         },
         {
           data: fs.readFileSync(
-            path.join(__dirname + '/resources/Pan/images/pan4.jpg')
+            path.join(__dirname + '/resources/Pan/images/pan4.jpg'),
+            { encoding: 'base64' }
           ),
           contentType: 'image/png',
           date: new Date(2020, 0, 4),
         },
         {
           data: fs.readFileSync(
-            path.join(__dirname + '/resources/Pan/images/pan7.jpg')
+            path.join(__dirname + '/resources/Pan/images/pan7.jpg'),
+            { encoding: 'base64' }
           ),
           contentType: 'image/png',
           date: new Date(2020, 0, 8),
