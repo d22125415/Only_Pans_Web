@@ -1,9 +1,5 @@
 import mongoose from 'mongoose';
 
-// const attributeSchema = new mongoose.Schema({
-//   attribute: { type: String },
-// });
-
 const panSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
@@ -12,6 +8,7 @@ const panSchema = new mongoose.Schema(
         data: Buffer,
         contentType: String,
         date: Date,
+        _id: false,
       },
     ],
     attributes: [{ type: String }],
