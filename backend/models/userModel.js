@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema(
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     img: { type: String },
-    pans: [{ type: Schema.Types.ObjectId, ref: 'pans' }],
+    pans: [{ type: Schema.Types.ObjectId, ref: 'Pan' }],
   },
   {
     timestamps: true,

@@ -10,6 +10,7 @@ let data = {
     {
       name: 'pan_1',
       attributes: ['a1', 'a2'],
+      description: 'the number 1 under the Pans',
       img: [
         {
           data: fs.readFileSync(
@@ -18,6 +19,7 @@ let data = {
           ),
           contentType: 'image/png',
           date: new Date(2020, 0, 1),
+          description: 'uh lock at that sun',
         },
         {
           data: fs.readFileSync(
@@ -26,6 +28,7 @@ let data = {
           ),
           contentType: 'image/png',
           date: new Date(2020, 0, 5),
+          description: 'uh lock at that sun',
         },
         {
           data: fs.readFileSync(
@@ -34,12 +37,14 @@ let data = {
           ),
           contentType: 'image/png',
           date: new Date(2020, 0, 6),
+          description: 'uh lock at that sun',
         },
       ],
     },
     {
       name: 'pan_2',
       attributes: ['a1', 'a3'],
+      description: 'the number 2 under the Pans',
       img: [
         {
           data: fs.readFileSync(
@@ -48,6 +53,7 @@ let data = {
           ),
           contentType: 'image/png',
           date: new Date(2020, 5, 1),
+          description: 'uh lock at that sun',
         },
         {
           data: fs.readFileSync(
@@ -56,6 +62,7 @@ let data = {
           ),
           contentType: 'image/png',
           date: new Date(2020, 0, 2),
+          description: 'uh lock at that sun',
         },
         {
           data: fs.readFileSync(
@@ -64,12 +71,14 @@ let data = {
           ),
           contentType: 'image/png',
           date: new Date(2020, 0, 15),
+          description: 'uh lock at that sun',
         },
       ],
     },
     {
       name: 'pan_3',
       attributes: ['a3', 'a2'],
+      description: 'the number 3 under the Pans',
       img: [
         {
           data: fs.readFileSync(
@@ -78,6 +87,7 @@ let data = {
           ),
           contentType: 'image/png',
           date: new Date(2020, 0, 11),
+          description: 'uh lock at that sun',
         },
         {
           data: fs.readFileSync(
@@ -86,6 +96,7 @@ let data = {
           ),
           contentType: 'image/png',
           date: new Date(2020, 0, 4),
+          description: 'uh lock at that sun',
         },
         {
           data: fs.readFileSync(
@@ -94,6 +105,7 @@ let data = {
           ),
           contentType: 'image/png',
           date: new Date(2020, 0, 8),
+          description: 'uh lock at that sun',
         },
       ],
     },

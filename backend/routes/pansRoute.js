@@ -9,9 +9,14 @@ pansRouter.get('/', async (req, res) => {
       throw new Error('no Pans at DB');
     } else {
       let pans_with_only_first_picture = pans.map((pan) => {
-        return { id: pan._id,name: pan.name, image: pan.img[0], attributes: pan.attributes };
+        return {
+          id: pan._id,
+          image: pan.img[0],
+          name: pan.name,
+          attributes: pan.attributes,
+          description: pan.description,
+        };
       });
-      console.log(pans_with_only_first_picture);
       res.send(pans_with_only_first_picture);
     }
   });

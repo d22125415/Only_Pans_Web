@@ -8,10 +8,12 @@ const panSchema = new mongoose.Schema(
         data: Buffer,
         contentType: String,
         date: Date,
+        description: String,
         _id: false,
       },
     ],
     attributes: [{ type: String }],
+    description: String,
   },
   {
     timestamps: true,
