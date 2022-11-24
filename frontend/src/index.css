@@ -5,7 +5,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  align-items: center ;
+  
 }
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -13,38 +17,60 @@ code {
 }
 
 .pans {
-  height: 100px;
-  max-width: 75%;
-}
 
-
-.pan{
-  border: 1px solid #28ade6;
-  margin: 1rem;
-}
-
-.pan img{
-  max-width: 420px;
-  max-height: 500px;
   
-}
-
-
-
-
-
-
-.PanInfo{
-  padding: 10px;
-  margin-left: 70px;
-  display: inline-block;
-}
-
-.pan button, p, hr{
   margin: 1rem;
-  font-size: 20px;
-  text-align: left;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+
 
 }
+
+.PanBody{
+  text-align: center;
+}
+
+
+
+
+
+
+
+/* buttons */
+button{
+  width:75px;
+  height: 50px;
+  font-size: 20px;
+  border-radius: 18px;
+}
+button:hover{
+  background-color: black;
+  color: white;
+}
+
+button:active {
+  background-color: #3e8e41;
+
+  transform: translateY(2px);
+
+}
+/* end of buttons */
+
+
+
+input {
+  width: 300px;
+  height: 50px;
+  font-size: 20px;
+  padding-left:10px;
+  border-radius: 18px;
+}
+
+
+
+
+
+
 
 
