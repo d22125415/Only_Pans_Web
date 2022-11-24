@@ -5,6 +5,7 @@ import cors from 'cors';
 
 import seedRoutes from './routes/seedRoutes.js';
 import pansRouter from './routes/pansRoute.js';
+import userRouter from './routes/userRoute.js';
 
 dotenv.config();
 
@@ -25,6 +26,7 @@ app.use(cors());
 
 app.use('/api/seed', seedRoutes);
 app.use('/api/pans', pansRouter);
+app.use('/api/user', userRouter);
 
 app.use((err, req, res, next) => {
   res.status(500).send({ message: err.stack });
