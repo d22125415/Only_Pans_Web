@@ -1,8 +1,10 @@
 import express from 'express';
 import User from '../models/userModel.js';
+import Pan from '../models/pansModel.js';
 import expressAsyncHandler from 'express-async-handler';
 import bcrypt from 'bcryptjs';
-import { generateToken } from '../utils.js';
+import { encryptToken, generateToken } from '../utils.js';
+import { Types } from 'mongoose';
 
 const userRouter = express.Router();
 
@@ -21,6 +23,7 @@ userRouter.post(
         email: user.email,
         _id: user._id,
         image: user?.profilePicture,
+        pans: user.pans,
         userToken: generateToken(user),
       });
       return;
@@ -49,9 +52,58 @@ userRouter.post(
       email: user.email,
       _id: user._id,
       image: user?.profilePicture,
+      pans: user.pans,
       userToken: generateToken(user),
     });
     return;
+  })
+);
+
+userRouter.post(
+  '/subscribe',
+  expressAsyncHandler(async (req, res) => {
+    const { userToken, pan_id } = req.body;
+    const userInfo = encryptToken(userToken);
+    try {
+      const user = await User.findOneAndUpdate(
+        { email: userInfo.email },
+        { $addToSet: { pans: new Types.ObjectId(pan_id) } },
+        { new: true }
+      );
+      res.status(200).send(user.pans);
+    } catch (error) {
+      res.status(401).send({ message: error.message });
+    }
+    return;
+  })
+);
+
+const getImagesOfPans = (pans) => {
+  return pans
+    .map((pan) => {
+      return pan.img.map((img) => {
+        return {
+          date: img.date,
+          description: img.description,
+          data: img.data,
+          pan: pan.name,
+        };
+      });
+    })
+    .reduce((pre, cur) => pre.concat(cur));
+  res.status(200).send(pans);
+};
+
+userRouter.get(
+  '/pans/:userToken',
+  expressAsyncHandler(async (req, res) => {
+    const userInfo = encryptToken(req.params.userToken);
+    const user = await User.findOne({ email: userInfo.email }).populate(
+      'pans',
+      ['name', 'img']
+    );
+    const pansImages = getImagesOfPans(user.pans);
+    res.status(200).send(pansImages);
   })
 );
 
