@@ -24,7 +24,7 @@ export default function Register() {
       profilePicture && (await getBase64StringOfBlob(profilePicture));
 
     const result = await axios
-      .post('http://localhost:3600/api/user/register', {
+      .post('/api/user/register', {
         name: name,
         email: email,
         password: password,

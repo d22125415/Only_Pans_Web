@@ -13,7 +13,7 @@ export default function Singin(props) {
   const submitHandler = async (e) => {
     e.preventDefault();
     const result = await axios
-      .post('http://localhost:3600/api/user/signin', {
+      .post('/api/user/signin', {
         email,
         password,
       })

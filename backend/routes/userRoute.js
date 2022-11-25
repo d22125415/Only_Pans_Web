@@ -22,7 +22,7 @@ userRouter.post(
         name: user.name,
         email: user.email,
         _id: user._id,
-        image: user?.profilePicture,
+        image: user?.img,
         pans: user.pans,
         userToken: generateToken(user),
       });
