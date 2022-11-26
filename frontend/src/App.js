@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import './App.css';
 import FeedScreen from './screens/FeedScreen';
 import HomeScreen from './screens/HomeScreen';
-import ProfileSettingScreen from './screens/ProfileSettingScreen';
+import ProfileSettingsScreen from './screens/ProfileSettingsScreen.js';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
@@ -77,9 +77,11 @@ function App() {
         <Container className="mt-3">
           <Routes>
             <Route path="/feed" element={<FeedScreen />} />
-            <Route path="/profilesettings" element={<ProfileSettingScreen />} />
             <Route path="/signin" element={<SigninScreen />} />
-            <Route path="/profileSettings" element={<ProfileSettingScreen />} />
+            <Route
+              path="/profileSettings"
+              element={<ProfileSettingsScreen />}
+            />
             <Route path="/" element={<HomeScreen />} />
           </Routes>
         </Container>

@@ -51,9 +51,34 @@ userRouter.post(
       name: user.name,
       email: user.email,
       _id: user._id,
-      image: user?.profilePicture,
+      image: user?.img,
       pans: user.pans,
       userToken: generateToken(user),
+    });
+    return;
+  })
+);
+
+userRouter.post(
+  '/update',
+  expressAsyncHandler(async (req, res) => {
+    const { name, email, password, profilePicture } = req.body;
+    let updateData = { name: name };
+    if (password) updateData.password = bcrypt.hashSync(password);
+    if (profilePicture) updateData.img = profilePicture;
+
+    const updatedUser = await User.findOneAndUpdate(
+      { email: email },
+      updateData,
+      { new: true }
+    );
+    res.status(200).send({
+      name: updatedUser.name,
+      email: updatedUser.email,
+      _id: updatedUser._id,
+      image: updatedUser?.img,
+      pans: updatedUser.pans,
+      userToken: generateToken(updatedUser),
     });
     return;
   })

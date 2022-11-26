@@ -24,10 +24,12 @@ export default function Singin(props) {
       console.log(result.data.message);
       return;
     }
-    console.log(result);
-    ctxDispatch({ type: 'USER_SIGNIN', payload: result.data });
-    localStorage.setItem('userInfo', JSON.stringify(result.data));
-    navigate('/');
+    if (result.status === 200) {
+      ctxDispatch({ type: 'USER_SIGNIN', payload: result.data });
+      localStorage.setItem('userInfo', JSON.stringify(result.data));
+      navigate('/');
+      return;
+    }
   };
 
   return (

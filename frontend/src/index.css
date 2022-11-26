@@ -58,6 +58,12 @@ input {
   height: 2em;
 }
 
+.medium-square-picture {
+  object-fit: cover;
+  width: 5em;
+  height: 5em;
+}
+
 .small-container {
   max-width: 600px;
 }
