@@ -32,7 +32,7 @@ function App() {
   return (
     <BrowserRouter>
       <header>
-        <Navbar bg={'primary'} variant={'light'}>
+        <Navbar bg={'primary'} variant={'light'} fixed="top">
           <Container>
             <LinkContainer to="/">
               <Navbar.Brand>OnlyPans 🍳</Navbar.Brand>

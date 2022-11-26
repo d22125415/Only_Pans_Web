@@ -59,7 +59,7 @@ userRouter.post(
   })
 );
 
-userRouter.post(
+userRouter.put(
   '/update',
   expressAsyncHandler(async (req, res) => {
     const { name, email, password, profilePicture } = req.body;
@@ -129,6 +129,19 @@ userRouter.get(
     );
     const pansImages = getImagesOfPans(user.pans);
     res.status(200).send(pansImages);
+  })
+);
+
+userRouter.delete(
+  '/:email',
+  expressAsyncHandler(async (req, res) => {
+    const { email } = req.params;
+    const result = await User.deleteOne({ email: email });
+    if (result.deletedCount === 0) {
+      res.status(409).send({ message: 'user not deleted' });
+      return;
+    }
+    res.status(200).send({ message: 'user removed' });
   })
 );
 

@@ -33,7 +33,7 @@ export default function ProfileSettingsScreen() {
     }
 
     const result = await axios
-      .post('/api/user/update', {
+      .put('/api/user/update', {
         name: name,
         email: email,
         password: password,
@@ -48,6 +48,18 @@ export default function ProfileSettingsScreen() {
       localStorage.setItem('userInfo', JSON.stringify(result.data));
       navigate('/');
       return;
+    }
+  };
+
+  const deleteProfile = async () => {
+    try {
+      const result = axios.delete(`/api/user/${email}`, { email: email });
+      console.log(result.response?.message);
+      ctxDispatch({ type: 'USER_SIGNOUT' });
+      localStorage.removeItem('userInfo');
+      navigate('/');
+    } catch (error) {
+      console.log(error);
     }
   };
   return (
@@ -117,9 +129,13 @@ export default function ProfileSettingsScreen() {
           />
         </Form.Group>
         <Form.Group>
-          <div className="mb-3">
+          <div className="d-flex justify-content-between mb-3">
             <Button type="submit">Update</Button>
+            <Button onClick={() => deleteProfile()} variant="warning">
+              Delete Profile
+            </Button>
           </div>
+          <div className="mb-3"></div>
         </Form.Group>
       </Form>
     </div>
