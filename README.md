@@ -17,6 +17,8 @@ add in backend folder an '.env' file and add:
 > PORT=3600 \
 > JWT_SECRET=< a secret String>
 
+delete package.json and node_modules folder in /backend
+
 'cd' into backend folder and run :
 
 ```
@@ -29,6 +31,8 @@ load Data to DB:
 use Postman to make an POST request to 'http://localhost:3600/api/seed/'
 
 ### Frontend :
+
+delete package.json and node_modules folder in /frontend
 
 'cd' into frontend folder and run :
 

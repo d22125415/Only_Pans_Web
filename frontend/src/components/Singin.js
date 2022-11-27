@@ -21,7 +21,7 @@ export default function Singin(props) {
         return err.response;
       });
     if (result.status === 401) {
-      console.log(result.data.message);
+      alert('The password/username you entered is incorrect!');
       return;
     }
     if (result.status === 200) {
