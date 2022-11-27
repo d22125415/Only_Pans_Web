@@ -63,7 +63,9 @@ userRouter.post(
   '/subscribe',
   expressAsyncHandler(async (req, res) => {
     const { userToken, pan_id } = req.body;
+    console.log('body ' + Object.getOwnPropertyNames(req.body));
     const userInfo = encryptToken(userToken);
+    console.log(userInfo);
     try {
       const user = await User.findOneAndUpdate(
         { email: userInfo.email },
@@ -72,7 +74,7 @@ userRouter.post(
       );
       res.status(200).send(user.pans);
     } catch (error) {
-      res.status(401).send({ message: error.message });
+      res.status(401).send({ message: error.stack });
     }
     return;
   })
