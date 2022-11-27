@@ -13,7 +13,7 @@ export default function Singin(props) {
   const submitHandler = async (e) => {
     e.preventDefault();
     const result = await axios
-      .post('http://localhost:3600/api/user/signin', {
+      .post('/api/user/signin', {
         email,
         password,
       })
@@ -24,10 +24,12 @@ export default function Singin(props) {
       console.log(result.data.message);
       return;
     }
-    console.log(result);
-    ctxDispatch({ type: 'USER_SIGNIN', payload: result.data });
-    localStorage.setItem('userInfo', JSON.stringify(result.data));
-    navigate('/');
+    if (result.status === 200) {
+      ctxDispatch({ type: 'USER_SIGNIN', payload: result.data });
+      localStorage.setItem('userInfo', JSON.stringify(result.data));
+      navigate('/');
+      return;
+    }
   };
 
   return (

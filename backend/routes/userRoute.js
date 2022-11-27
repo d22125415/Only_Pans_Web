@@ -22,7 +22,7 @@ userRouter.post(
         name: user.name,
         email: user.email,
         _id: user._id,
-        image: user?.profilePicture,
+        image: user?.img,
         pans: user.pans,
         userToken: generateToken(user),
       });
@@ -51,9 +51,34 @@ userRouter.post(
       name: user.name,
       email: user.email,
       _id: user._id,
-      image: user?.profilePicture,
+      image: user?.img,
       pans: user.pans,
       userToken: generateToken(user),
+    });
+    return;
+  })
+);
+
+userRouter.put(
+  '/update',
+  expressAsyncHandler(async (req, res) => {
+    const { name, email, password, profilePicture } = req.body;
+    let updateData = { name: name };
+    if (password) updateData.password = bcrypt.hashSync(password);
+    if (profilePicture) updateData.img = profilePicture;
+
+    const updatedUser = await User.findOneAndUpdate(
+      { email: email },
+      updateData,
+      { new: true }
+    );
+    res.status(200).send({
+      name: updatedUser.name,
+      email: updatedUser.email,
+      _id: updatedUser._id,
+      image: updatedUser?.img,
+      pans: updatedUser.pans,
+      userToken: generateToken(updatedUser),
     });
     return;
   })
@@ -63,16 +88,15 @@ userRouter.post(
   '/subscribe',
   expressAsyncHandler(async (req, res) => {
     const { userToken, pan_id } = req.body;
-    console.log('body ' + Object.getOwnPropertyNames(req.body));
     const userInfo = encryptToken(userToken);
-    console.log(userInfo);
     try {
       const user = await User.findOneAndUpdate(
         { email: userInfo.email },
         { $addToSet: { pans: new Types.ObjectId(pan_id) } },
         { new: true }
       );
-      res.status(200).send(user.pans);
+      console.log(user);
+      res.status(200).send(user);
     } catch (error) {
       res.status(401).send({ message: error.stack });
     }
@@ -106,6 +130,19 @@ userRouter.get(
     );
     const pansImages = getImagesOfPans(user.pans);
     res.status(200).send(pansImages);
+  })
+);
+
+userRouter.delete(
+  '/:email',
+  expressAsyncHandler(async (req, res) => {
+    const { email } = req.params;
+    const result = await User.deleteOne({ email: email });
+    if (result.deletedCount === 0) {
+      res.status(409).send({ message: 'user not deleted' });
+      return;
+    }
+    res.status(200).send({ message: 'user removed' });
   })
 );
 

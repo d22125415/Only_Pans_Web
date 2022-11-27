@@ -11,7 +11,6 @@ const initialState = {
 function reducer(state, action) {
   switch (action.type) {
     case 'USER_SIGNIN':
-      console.log(action.payload);
       return { ...state, userInfo: action.payload };
 
     case 'USER_SIGNOUT':
