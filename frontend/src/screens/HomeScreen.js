@@ -81,7 +81,7 @@ export default function HomeScreen() {
           <option value="Expensive">Expensive</option>
           <option value="Light">Light</option>
           <option value="Heavy">Heavy</option>
-          <option value="Durable">Durable</option>
+          <option value="Durable">Durable2</option>
         </select>
         
         {pans.filter(pan => {

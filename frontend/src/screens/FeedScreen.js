@@ -72,7 +72,7 @@ export default function FeedScreen() {
 
   return (
     <div>
-      <main className='border border-dark rounded'>
+      <main>
       <h1 >All the subscribed pans</h1>
       <button onClick={event => {setsortterm(event.target.value)}} value="true">Sort by date</button>
       <button onClick={event => {setsortterm(event.target.value)}} value="">Reset</button>
