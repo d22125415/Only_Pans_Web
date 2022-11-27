@@ -4,6 +4,9 @@ import { getError } from '../utils.js';
 import {useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { useContext } from 'react';
+import { Store } from '../Store.js';
+import { useNavigate } from 'react-router-dom';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -42,14 +45,29 @@ export default function HomeScreen() {
     fetchData();
   }, []);
 
+  const { state, dispatch: ctxDispatch } = useContext(Store);
 
+  const { userInfo } = state;
 
  
 
   const [searchTerm, setSearchTerm] = useState('')
   const [attTerm, setattTerm] = useState('')
+  const navigate = useNavigate();
 
-  
+  const sub = async ( panid) => {
+    if(!userInfo){
+      navigate('/signin')
+      return
+    }
+    
+    const result = await axios.post("http://localhost:3600/api/user/subscribe", {
+    "userToken": userInfo.userToken,
+    "pan_id": panid
+  })
+  ctxDispatch({ type: 'USER_SIGNIN', payload: result.data });
+  localStorage.setItem('userInfo', JSON.stringify(result.data));
+  }
 
   return (
     <div>
@@ -57,12 +75,14 @@ export default function HomeScreen() {
         <h1 >All the pans at one place</h1>
         <input type="text" placeholder="Search..." 
          onChange={event => {setSearchTerm(event.target.value)}}/>
-        <button value="a1" onClick={event => {setattTerm(event.target.value)}}>Attr. 1</button>
-        <button value="a2" onClick={event => {setattTerm(event.target.value)}}>Attr. 2</button>
-        <button value="a3" onClick={event => {setattTerm(event.target.value)}}>Attr. 3</button>
-        <button value="a4" onClick={event => {setattTerm(event.target.value)}}>Attr. 4</button>
-        <button value="a5" onClick={event => {setattTerm(event.target.value)}}>Attr. 5</button>
-        <button value=""   onClick={event => {setattTerm(event.target.value)}}>Reset</button>
+        <select onChange={event => {setattTerm(event.target.value)}}>
+          <option value="">Attributes</option>
+          <option value="a1">Attr. 1</option>
+          <option value="a2">Attr. 2</option>
+          <option value="a3">Attr. 3</option>
+          <option value="a4">Attr. 4</option>
+          <option value="a5">Attr. 5</option>
+        </select>
         
         {pans.filter(pan => {
           let allAtributes = pan.attributes.reduce((b, a) => b + a);
@@ -80,7 +100,7 @@ export default function HomeScreen() {
                return pan
              }
         }).map(pan => (        
-        <div className='pans '>
+        <div className='pans ' key={pan.id}>
           {loading ? <p>is loading</p> : (
           <Card style={{ width: '32rem'}} className="Pan  border-dark">
             <Card.Img className="PanImage  border border-dark rounded " variant="top" src={`data:image/jpeg;base64,${pan.image.data.data.reduce((pre, cur) => pre + String.fromCharCode(cur),'')}`} />
@@ -89,7 +109,7 @@ export default function HomeScreen() {
               <Card.Text>
                 With supporting text below as a natural lead-in to additional content.
               </Card.Text>
-              <Button variant="primary" style={{ width: '8rem'}} className=" border border-dark rounded">Subscribe</Button>
+              <Button variant="primary" style={{ width: '8rem'}} disabled={!userInfo?.pans && userInfo?.pans?.filter(checkpanid =>  checkpanid === pan.id)} className=" border border-dark rounded" onClick={(event) => sub(pan.id)} >Subscribe</Button>
             </Card.Body>
 
           </Card>

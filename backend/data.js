@@ -8,47 +8,56 @@ const __dirname = path.dirname(__filename);
 let data = {
   pans: [
     {
-      name: 'pan_1',
-      attributes: ['a1', 'a2'],
-      description: 'the number 1 under the Pans',
+      name: 'Tramontina Skillet',
+      attributes: ['Seasoned','Durable'],
+      description: 'It provides even and efficient heat distribution, which saves time and energy and features an ergonomic handle with a hanging hole and two pouring lips.',
       img: [
         {
           data: fs.readFileSync(
-            path.join(__dirname + '/resources/Pan/images/pan1.jpg'),
+            path.join(__dirname + '/resources/Pan/images/4.jpg'),
             { encoding: 'base64' }
           ),
           contentType: 'image/png',
           date: new Date(2020, 0, 1),
-          description: 'uh lock at that sun',
+          description: 'Basic',
         },
         {
           data: fs.readFileSync(
-            path.join(__dirname + '/resources/Pan/images/pan5.jpg'),
+            path.join(__dirname + '/resources/Pan/images/4.1.jpg'),
             { encoding: 'base64' }
           ),
           contentType: 'image/png',
           date: new Date(2020, 0, 5),
-          description: 'uh lock at that sun',
+          description: 'From the side!',
         },
         {
           data: fs.readFileSync(
-            path.join(__dirname + '/resources/Pan/images/pan6.jpg'),
+            path.join(__dirname + '/resources/Pan/images/4.2.jpg'),
             { encoding: 'base64' }
           ),
           contentType: 'image/png',
           date: new Date(2020, 0, 6),
-          description: 'uh lock at that sun',
+          description: 'How do i look?',
         },
+        // {
+        //   data: fs.readFileSync(
+        //     path.join(__dirname + '/resources/Pan/images/4.3.jpg'),
+        //     { encoding: 'base64' }
+        //   ),
+        //   contentType: 'image/png',
+        //   date: new Date(2020, 0, 6),
+        //   description: 'Posing!',
+        // },
       ],
     },
     {
-      name: 'pan_2',
-      attributes: ['a1', 'a3'],
+      name: 'Vouge Grill Pan',
+      attributes: ['Durable','Cheap'],
       description: 'the number 2 under the Pans',
       img: [
         {
           data: fs.readFileSync(
-            path.join(__dirname + '/resources/Pan/images/pan2.jpg'),
+            path.join(__dirname + '/resources/Pan/images/1.jpg'),
             { encoding: 'base64' }
           ),
           contentType: 'image/png',
@@ -57,7 +66,7 @@ let data = {
         },
         {
           data: fs.readFileSync(
-            path.join(__dirname + '/resources/Pan/images/pan3.jpg'),
+            path.join(__dirname + '/resources/Pan/images/1.1.jpg'),
             { encoding: 'base64' }
           ),
           contentType: 'image/png',
@@ -66,7 +75,7 @@ let data = {
         },
         {
           data: fs.readFileSync(
-            path.join(__dirname + '/resources/Pan/images/pan9.jpg'),
+            path.join(__dirname + '/resources/Pan/images/1.2.jpg'),
             { encoding: 'base64' }
           ),
           contentType: 'image/png',
@@ -82,7 +91,7 @@ let data = {
       img: [
         {
           data: fs.readFileSync(
-            path.join(__dirname + '/resources/Pan/images/pan8.jpg'),
+            path.join(__dirname + '/resources/Pan/images/2.jpg'),
             { encoding: 'base64' }
           ),
           contentType: 'image/png',
@@ -91,20 +100,11 @@ let data = {
         },
         {
           data: fs.readFileSync(
-            path.join(__dirname + '/resources/Pan/images/pan4.jpg'),
+            path.join(__dirname + '/resources/Pan/images/2.1.jpg'),
             { encoding: 'base64' }
           ),
           contentType: 'image/png',
           date: new Date(2020, 0, 4),
-          description: 'uh lock at that sun',
-        },
-        {
-          data: fs.readFileSync(
-            path.join(__dirname + '/resources/Pan/images/pan7.jpg'),
-            { encoding: 'base64' }
-          ),
-          contentType: 'image/png',
-          date: new Date(2020, 0, 8),
           description: 'uh lock at that sun',
         },
       ],

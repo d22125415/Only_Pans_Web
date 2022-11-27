@@ -13,5 +13,7 @@ export const generateToken = (user) => {
 };
 
 export const encryptToken = (userToken) => {
+  console.log("test> " + userToken);
+  console.log(jwt.decode(userToken));
   return jwt.decode(userToken);
 };
