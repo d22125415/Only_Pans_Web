@@ -71,17 +71,17 @@ export default function HomeScreen() {
 
   return (
     <div>
-      <main className='border border-dark rounded'>
+      <main >
         <h1 >All the pans at one place</h1>
         <input type="text" placeholder="Search..." 
          onChange={event => {setSearchTerm(event.target.value)}}/>
         <select onChange={event => {setattTerm(event.target.value)}}>
           <option value="">Attributes</option>
-          <option value="a1">Attr. 1</option>
-          <option value="a2">Attr. 2</option>
-          <option value="a3">Attr. 3</option>
-          <option value="a4">Attr. 4</option>
-          <option value="a5">Attr. 5</option>
+          <option value="Cheap">Cheap</option>
+          <option value="Expensive">Expensive</option>
+          <option value="Light">Light</option>
+          <option value="Heavy">Heavy</option>
+          <option value="Durable">Durable</option>
         </select>
         
         {pans.filter(pan => {
@@ -107,7 +107,7 @@ export default function HomeScreen() {
             <Card.Body className="PanBody">
               <Card.Title><h1>{pan.name}</h1></Card.Title>
               <Card.Text>
-                With supporting text below as a natural lead-in to additional content.
+                {pan.description}
               </Card.Text>
               <Button variant="primary" style={{ width: '8rem'}} disabled={!userInfo?.pans && userInfo?.pans?.filter(checkpanid =>  checkpanid === pan.id)} className=" border border-dark rounded" onClick={(event) => sub(pan.id)} >Subscribe</Button>
             </Card.Body>

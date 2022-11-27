@@ -46,7 +46,7 @@ function App() {
         </Navbar>
       </header>
       <main>
-        <Container className="mt-3">
+        <Container className="mt-3 border border-0">
           <Routes>
             <Route path="/feed" element={<FeedScreen />} />
             <Route path="/profilesettings" element={<ProfileSettingScreen />} />
