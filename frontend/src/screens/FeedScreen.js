@@ -5,8 +5,7 @@ import { useContext } from 'react';
 import { Store } from '../Store.js';
 
 import Card from 'react-bootstrap/Card';
-import {useState} from 'react';
-
+import { useState } from 'react';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -25,9 +24,6 @@ const reducer = (state, action) => {
   }
 };
 
-
-
-
 export default function FeedScreen() {
   const [{ loading, pans }, dispatch] = useReducer(reducer, {
     pans: [],
@@ -38,15 +34,13 @@ export default function FeedScreen() {
 
   const { userInfo } = state;
 
-  let n = userInfo.userToken
-  let n2 = `http://localhost:3600/api/user/pans/` + n
-
+  let n = userInfo.userToken;
+  let n2 = `/api/user/pans/` + n;
 
   useEffect(() => {
     const fetchData = async () => {
       dispatch({ type: 'FETCH_REQUEST' });
       try {
-
         const result = await axios.get(n2);
         dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
       } catch (error) {
@@ -56,39 +50,98 @@ export default function FeedScreen() {
     fetchData();
   }, []);
 
-
-
-
-
   function custom_sort(a, b) {
     return new Date(a.date).getTime() - new Date(b.date).getTime();
   }
-  
-  let test= [...pans];
+
+  let test = [...pans];
   test.sort(custom_sort);
 
-
-  const [sortterm, setsortterm] = useState('')
+  const [sortterm, setsortterm] = useState('');
 
   return (
     <div>
-      <main className='border border-dark rounded'>
-      <h1 >All the subscribed pans</h1>
-      <button onClick={event => {setsortterm(event.target.value)}} value="true">Sort by date</button>
-      <button onClick={event => {setsortterm(event.target.value)}} value="">Reset</button>
+      <main className="border border-dark rounded">
+        <h1>All the subscribed pans</h1>
+        <button
+          onClick={(event) => {
+            setsortterm(event.target.value);
+          }}
+          value="true"
+        >
+          Sort by date
+        </button>
+        <button
+          onClick={(event) => {
+            setsortterm(event.target.value);
+          }}
+          value=""
+        >
+          Reset
+        </button>
 
-
-      {sortterm ? <div>{test.map(pan => <div className='pans '>{loading ? <p>is loading</p> : (<Card style={{ width: '32rem'}} className="Pan  border-dark"><Card.Text  >{new Date(pan.date).toLocaleString("lookup")}</Card.Text><Card.Img className="PanImage  border border-dark rounded " variant="top" src={`data:image/jpeg;base64,${pan.data.data.reduce((pre, cur) => pre + String.fromCharCode(cur),'')}`} /><Card.Body className="PanBody"><Card.Title><h1>{pan.name}</h1></Card.Title><Card.Text>{pan.description}</Card.Text></Card.Body></Card>)}</div>)} </div> 
-      : 
-      <div>{pans.map(pan => <div className='pans '>{loading ? <p>is loading</p> : (<Card style={{ width: '32rem'}} className="Pan  border-dark"><Card.Text  > {new Date(pan.date).toLocaleString("lookup")}</Card.Text><Card.Img className="PanImage  border border-dark rounded " variant="top" src={`data:image/jpeg;base64,${pan.data.data.reduce((pre, cur) => pre + String.fromCharCode(cur),'')}`} /><Card.Body className="PanBody"><Card.Title><h1>{pan.name}</h1></Card.Title><Card.Text>{pan.description}</Card.Text></Card.Body></Card>)}</div>)}</div>}
-      
-
-
-
-
-      
-
-  
+        {sortterm ? (
+          <div>
+            {test.map((pan) => (
+              <div className="pans ">
+                {loading ? (
+                  <p>is loading</p>
+                ) : (
+                  <Card style={{ width: '32rem' }} className="Pan  border-dark">
+                    <Card.Text>
+                      {new Date(pan.date).toLocaleString('lookup')}
+                    </Card.Text>
+                    <Card.Img
+                      className="PanImage  border border-dark rounded "
+                      variant="top"
+                      src={`data:image/jpeg;base64,${pan.data.data.reduce(
+                        (pre, cur) => pre + String.fromCharCode(cur),
+                        ''
+                      )}`}
+                    />
+                    <Card.Body className="PanBody">
+                      <Card.Title>
+                        <h1>{pan.name}</h1>
+                      </Card.Title>
+                      <Card.Text>{pan.description}</Card.Text>
+                    </Card.Body>
+                  </Card>
+                )}
+              </div>
+            ))}{' '}
+          </div>
+        ) : (
+          <div>
+            {pans.map((pan) => (
+              <div className="pans ">
+                {loading ? (
+                  <p>is loading</p>
+                ) : (
+                  <Card style={{ width: '32rem' }} className="Pan  border-dark">
+                    <Card.Text>
+                      {' '}
+                      {new Date(pan.date).toLocaleString('lookup')}
+                    </Card.Text>
+                    <Card.Img
+                      className="PanImage  border border-dark rounded "
+                      variant="top"
+                      src={`data:image/jpeg;base64,${pan.data.data.reduce(
+                        (pre, cur) => pre + String.fromCharCode(cur),
+                        ''
+                      )}`}
+                    />
+                    <Card.Body className="PanBody">
+                      <Card.Title>
+                        <h1>{pan.name}</h1>
+                      </Card.Title>
+                      <Card.Text>{pan.description}</Card.Text>
+                    </Card.Body>
+                  </Card>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
       </main>
     </div>
   );
@@ -96,8 +149,7 @@ export default function FeedScreen() {
 
 //src={`data:image/jpeg;base64,${pan.image.data.data.reduce((pre, cur) => pre + String.fromCharCode(cur),'')}`}
 
-
-// {pans.map(pan => 
+// {pans.map(pan =>
 
 //   <div className='pans '>
 //   {loading ? <p>is loading</p> : (

@@ -95,8 +95,17 @@ userRouter.post(
         { $addToSet: { pans: new Types.ObjectId(pan_id) } },
         { new: true }
       );
-      console.log(user);
-      res.status(200).send(user);
+      res
+        .status(200)
+        .send({
+          name: user.name,
+          email: user.email,
+          _id: user._id,
+          image: user?.img,
+          pans: user.pans,
+          userToken: generateToken(user),
+        });
+      //res.status(200).send(await User.findOne(user));
     } catch (error) {
       res.status(401).send({ message: error.stack });
     }

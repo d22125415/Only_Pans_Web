@@ -59,13 +59,10 @@ export default function HomeScreen() {
       return;
     }
 
-    const result = await axios.post(
-      'http://localhost:3600/api/user/subscribe',
-      {
-        userToken: userInfo.userToken,
-        pan_id: panid,
-      }
-    );
+    const result = await axios.post('/api/user/subscribe', {
+      userToken: userInfo.userToken,
+      pan_id: panid,
+    });
     ctxDispatch({ type: 'USER_SIGNIN', payload: result.data });
     localStorage.setItem('userInfo', JSON.stringify(result.data));
   };
@@ -137,12 +134,7 @@ export default function HomeScreen() {
                     <Button
                       variant="primary"
                       style={{ width: '8rem' }}
-                      disabled={
-                        !userInfo?.pans &&
-                        userInfo?.pans?.filter(
-                          (checkpanid) => checkpanid === pan.id
-                        )
-                      }
+                      disabled={userInfo?.pans?.includes(pan.id)}
                       className=" border border-dark rounded"
                       onClick={(event) => sub(pan.id)}
                     >
